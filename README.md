@@ -1,5 +1,15 @@
-### FreeCodeCamp Twitch Bot and Dashboard
+## FCCBOT
 
-Thanks to @Septimus, @DemiPixel, @jackel27 and @thejonathangraham.
+#### Contributors
 
-Duplicate config/template.json to a new file called config/default.json.
+ - @thejonathangraham
+ - @DemiPixel
+ - @Septimu
+ -  @jackel27
+
+#### Getting Started
+
+1. Replace `config/template.json` with `config/default.json` and add the appropriate details. We have added this into the .gitignore file.
+
+
+#### Coming soon...
