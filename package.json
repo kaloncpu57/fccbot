@@ -1,0 +1,32 @@
+{
+  "name": "fccbot",
+  "version": "1.0.0",
+  "description": "Bot and Dashboard to moderate and run the FreeCodeCamp twitch channel",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thejonathangraham/fccbot.git"
+  },
+  "keywords": [
+    "bot",
+    "twitch",
+    "freecodecamp",
+    "coding"
+  ],
+  "author": "DemiPixel <luke5227@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thejonathangraham/fccbot/issues"
+  },
+  "homepage": "https://github.com/thejonathangraham/fccbot#readme",
+  "dependencies": {
+    "config": "^1.19.0",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.5",
+    "socket.io": "^1.4.5",
+    "tmi.js": "0.0.27"
+  }
+}
