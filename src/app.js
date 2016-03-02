@@ -34,16 +34,32 @@ var options = {
     debug: true
   },
   connection: {
-    random: 'chat',
+    cluster: 'chat',
     reconnect: true
   },
   identity: {
     username: config.get('twitch.username'),
-    password: config.get('twitch.oauth')
+    password: config.get('twitch.oauth').trim()
   },
-  channels: config.get('twitch.channels')
+  channels: config.get('twitch.channels').map(channel => '#'+channel)
 };
-var client = new tmi.client(options);
 
-require('./bot/index')(app, db, io);
-require('./dashboard/server')(app, db, io);
+console.log(options.channels);
+
+var whisperoptions = {
+  options: options.options,
+  connection: {
+    cluster: 'group',
+    reconnect: true
+  },
+  identity: options.identity
+}
+
+var client = new tmi.client(options);
+var whisperclient = new tmi.client(whisperoptions);
+
+client.connect();
+whisperclient.connect();
+
+require('./bot/index')(app, db, io, config, client, whisperclient);
+require('./dashboard/server')(app, db, io, config);
