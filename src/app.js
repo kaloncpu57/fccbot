@@ -1,8 +1,8 @@
-var express = require('express');
-var tmi = require('tmi.js');
-var mongoose = require('mongoose');
+const express = require('express');
+const tmi = require('tmi.js');
+const mongoose = require('mongoose');
 
-var config = require('config');
+const config = require('config');
 
 var MongoDB = mongoose.connect('mongodb://localhost:27017').connection;
 
@@ -29,7 +29,7 @@ var server = app.listen(port, () => {
 var io = require('socket.io').listen(server);
 
 
-var options = {
+const options = {
   options: {
     debug: true
   },
@@ -44,9 +44,7 @@ var options = {
   channels: config.get('twitch.channels').map(channel => '#'+channel)
 };
 
-console.log(options.channels);
-
-var whisperoptions = {
+const whisperoptions = {
   options: options.options,
   connection: {
     cluster: 'group',

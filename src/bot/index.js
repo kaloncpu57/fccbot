@@ -1,3 +1,5 @@
+const requireIndex = require('requireindex');
+
 module.exports = function(app, db, io, config, client, wclient) {
 
   var messagesSent = []; // List of last 20 message send times
@@ -21,21 +23,22 @@ module.exports = function(app, db, io, config, client, wclient) {
       chat(msg.channel, msg.msg);
     }
   }
+  setInterval(sendAllNeededMessages, 1000); // TODO: Maybe fix? Cleaner way of doing this?
 
   function whisper(user, msg) {
-    whisperclient.whisper(user, msg);
+    wclient.whisper(user, msg);
   }
 
-  console.log('connect');
   client.on('connected', function() {
     console.log('Connected to channels');
-    chat(config.get('twitch.channels')[0], 'Hey there, everybody!');
   });
   wclient.on('connected', function() {
     console.log('Connected to whisper server');
   });
 
-  client.on('chat', function(c, user, message, self) {
-    if (self) return;
+  const commandFiles = requireIndex(__dirname+'/commands');
+  Object.keys(commandFiles).forEach(cmdFile => {
+    console.log('Loading Command File '+cmdFile);
+    commandFiles[cmdFile](client, wclient, chat, whisper, config, db);
   });
 }
