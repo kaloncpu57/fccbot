@@ -11,4 +11,10 @@ module.exports = function(client, wclient, chat, whisper) {
       chat(channel, Math.floor(Math.random()*(high-low+1)+low) + '!');
     }
   });
+
+
+  client.on('join', function (channel) {
+    chat(channel, 'The dark side has returned!');
+  });
+
 }
