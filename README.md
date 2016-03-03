@@ -4,8 +4,9 @@
 
  - @thejonathangraham
  - @DemiPixel
- - @Septimu
- -  @jackel27
+ - @Septimus
+ - @jackel27
+ - @dwd2010
 
 #### Getting Started
 

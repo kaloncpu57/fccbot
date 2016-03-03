@@ -1,8 +1,8 @@
-var express = require('express');
-var tmi = require('tmi.js');
-var mongoose = require('mongoose');
-
-var config = require('config');
+const express = require('express');
+const tmi = require('tmi.js');
+const mongoose = require('mongoose');
+const path = require('path');
+const config = require('config');
 
 var MongoDB = mongoose.connect('mongodb://localhost:27017').connection;
 
@@ -15,6 +15,8 @@ MongoDB.once('open', function() {
 });
 
 var app = express(MongoDB);
+
+app.use(express.static(path.join(__dirname, 'dashboard/views')));
 
 var db = {
   //user: require('./schemas/user')(mongoose),
@@ -29,21 +31,35 @@ var server = app.listen(port, () => {
 var io = require('socket.io').listen(server);
 
 
-var options = {
+const options = {
   options: {
     debug: true
   },
   connection: {
-    random: 'chat',
+    cluster: 'chat',
     reconnect: true
   },
   identity: {
     username: config.get('twitch.username'),
-    password: config.get('twitch.oauth')
+    password: config.get('twitch.oauth').trim()
   },
-  channels: config.get('twitch.channels')
+  channels: config.get('twitch.channels').map(channel => '#'+channel)
 };
-var client = new tmi.client(options);
 
-require('./bot/index')(app, db, io);
-require('./dashboard/server')(app, db, io);
+const whisperoptions = {
+  options: options.options,
+  connection: {
+    cluster: 'group',
+    reconnect: true
+  },
+  identity: options.identity
+}
+
+var client = new tmi.client(options);
+var whisperclient = new tmi.client(whisperoptions);
+
+client.connect();
+whisperclient.connect();
+
+require('./bot/index')(app, db, io, config, client, whisperclient);
+require('./dashboard/server')(app, db, io, config);

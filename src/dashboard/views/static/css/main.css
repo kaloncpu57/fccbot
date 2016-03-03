@@ -1,0 +1,14 @@
+.vertical-align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.col {
+    text-align: center;
+}
+
+#streamer_name {
+    margin-left: 15px;
+}
