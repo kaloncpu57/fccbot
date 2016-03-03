@@ -6,5 +6,9 @@
     "channels": ["freecodecamp"]
   },
 
+  "google": {
+    "key": ""
+  },
+
   "testPort": true
 }
