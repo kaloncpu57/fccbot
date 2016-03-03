@@ -1,7 +1,7 @@
 const express = require('express');
 const tmi = require('tmi.js');
 const mongoose = require('mongoose');
-
+const path = require('path');
 const config = require('config');
 
 var MongoDB = mongoose.connect('mongodb://localhost:27017').connection;
@@ -15,6 +15,8 @@ MongoDB.once('open', function() {
 });
 
 var app = express(MongoDB);
+
+app.use(express.static(path.join(__dirname, 'dashboard/views')));
 
 var db = {
   //user: require('./schemas/user')(mongoose),
