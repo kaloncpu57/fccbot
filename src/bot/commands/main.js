@@ -13,8 +13,8 @@ module.exports = function(client, wclient, chat, whisper) {
   });
 
 
-  client.on('join', function (channel) {
-    chat(channel, 'The dark side has returned!');
-  });
+  // client.on('join', function (channel) {
+  //   chat(channel, 'The dark side has returned!');
+  // });
 
 }
