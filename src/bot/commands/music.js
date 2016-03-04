@@ -9,7 +9,7 @@ module.exports = function(client, wclient, chat, whisper, config, db) {
     , key: config.get('google.key')
   });
 
-  client.on('chat', function(channel, user, message, self) {
+  client.on('chat', (channel, user, message, self) => {
     if (self) return;
 
     if (message.match(/^!songrequest .+/i) || message.match(/^!sr .+/i)) {
