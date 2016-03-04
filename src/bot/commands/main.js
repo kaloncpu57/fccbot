@@ -12,9 +12,14 @@ module.exports = function(client, wclient, chat, whisper) {
     }
   });
 
+  client.on('chat', function(channel, user, message, self) {
+    if (self) return;
 
-  client.on('join', function (channel) {
-    chat(channel, 'The dark side has returned!');
+    if (message.toLowerCase() === '!clear' && user['user-type'] === 'mod') {
+      client.clear(channel);
+      client.say(channel, 'The chat has been cleared.');
+    }
+
   });
 
 }
