@@ -12,3 +12,11 @@
 #streamer_name {
     margin-left: 15px;
 }
+
+#user_profile img {
+    vertical-align: middle;
+}
+
+#user_quit a:hover {
+    background-color: transparent;
+}
