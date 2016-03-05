@@ -19,7 +19,7 @@ var app = express(MongoDB);
 app.use(express.static(path.join(__dirname, 'dashboard/views')));
 
 var db = {
-  //user: require('./schemas/user')(mongoose),
+  message: require('../schemas/message')(mongoose),
 };
 
 

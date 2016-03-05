@@ -36,6 +36,16 @@ module.exports = function(app, db, io, config, client, wclient) {
     console.log('Connected to whisper server');
   });
 
+  client.on('chat', (channel, user, message, self) => {
+    var message = new db.message({
+      user: user.username,
+      message: message
+    });
+    message.save((err) => {
+      if (err) console.log('[ERROR SAVING MESSAGE]',err);
+    });
+  });
+
   const commandFiles = requireIndex(__dirname+'/commands');
   Object.keys(commandFiles).forEach(cmdFile => {
     console.log('Loading Command File '+cmdFile);
