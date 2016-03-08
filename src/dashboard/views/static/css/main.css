@@ -6,7 +6,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    /*height: 60px;*/
+/*height: 60px;*/
 }
 
 .col {
@@ -26,13 +26,43 @@ header {
 }
 
 #page_title {
-    /*color: #0277bd;*/
-    font-weight: bold;
+/*color: #0277bd;*/
+    font-weight: 700;
     border-bottom: #0277bd 2px solid;
-    padding: 4px 0 2px 0;
-    margin: 0 0 22px 0;
+    padding: 4px 0 2px;
+    margin: 0 0 22px;
 }
 
 .dashboard {
     margin-bottom: 40px;
 }
+
+.inputpolloption {
+    display: flex;
+}
+
+.pollbuttons {
+    margin: auto;
+    text-align: right;
+}
+
+.chip {
+    border-width: 1px;
+    border-color: #8ACFC8;
+    border-style: solid;
+    margin-bottom: 5px;
+    background-color: #F6F6F6;
+    display: block;
+}
+
+.pollitems {
+    padding-top: 10px;
+}
+
+#deloptbtn {
+    padding:0;
+}
+
+/*#deloptbtn:hover {
+    font-size: 16px;
+}*/

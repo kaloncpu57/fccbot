@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="/static/css/materialize.css">
   <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
+
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
@@ -59,7 +61,11 @@
         </form>
       </div>
       <div class="col s3 vertical-align">
-        <div>Poll</div>
+        <div>
+          <!-- Poll section header...  -->
+           <button data-target="modal1" class="btn modal-trigger">New Poll</button>
+
+        </div>
       </div>
     </div>
 
@@ -81,8 +87,57 @@
         <div>ID 5 Event log</div>
       </div>
       <div class="col s3">
-        <div>ID 6</div>
-        <div>ID 9</div>
+        <!-- modals poll -->
+        <!-- <div>ID 6</div>
+        <div>ID 9</div> -->
+        <!-- Modal Trigger -->
+
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+            <!-- set poll title -->
+        <div class="input-field col s6">
+            <i class="material-icons prefix">assessment</i>
+            <input id="poll_question" type="text" class="validate">
+            <label for="poll_question">Poll Title</label>
+              <!-- button below poll title input to clear all items -->
+            <div class="pollbuttons">
+
+                  <a class="waves-effect btn-flat" id="deloptbtn"><i class="material-icons left">delete</i>CLEAR</a>
+
+              </div>
+
+            <!-- Populated div of added poll items -->
+            <div class="pollitems">
+
+            </div>
+
+            <!-- add poll option -->
+            <div class="inputpolloption">
+
+              <div class="input-field col s12 addoption">
+                  <i class="material-icons prefix">note_add</i>
+                  <input id="poll_item_input" type="text" class="validate">
+                  <label for="poll_item_input">Insert option here..</label>
+
+                </div>
+
+
+      </div>
+
+
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit Poll</a>
+      </div>
+    </div>
+
       </div>
     </div>
 
@@ -116,5 +171,6 @@
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="/static/js/materialize.js"></script>
+    <script type="text/javascript" src="/static/js/main.js"></script>
 </body>
 </html>
