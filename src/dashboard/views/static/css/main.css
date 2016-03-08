@@ -25,55 +25,33 @@ header {
     background-color: transparent;
 }
 
-#page_title {
-/*color: #0277bd;*/
-    font-weight: 700;
-    border-bottom: #0277bd 2px solid;
-    padding: 4px 0 2px;
-    margin: 0 0 22px;
-}
-
 .dashboard {
     margin-bottom: 40px;
+}
+
+.modal.modal-fixed-footer {
+  height: 45%;
 }
 
 .inputpolloption {
     display: flex;
 }
 
-.pollbuttons {
-    margin: auto;
-    text-align: right;
-}
-
 .chip {
-    border-width: 1px;
-    border-color: #8ACFC8;
-    border-style: solid;
-    margin-bottom: 5px;
-    background-color: #F6F6F6;
-    display: block;
-    font-size: 1.5em;
+    margin: 0px 10px 15px 5px;
+    float: left;
+    font-size: 1.2em;
+    background-color: #f1f1f1;
 }
 
 .pollitems {
   margin-top: 10px;
-  margin-bottom: 80px;
-
+  margin-bottom: 20px;
 }
 
-#deloptbtn {
-    padding:0;
-}
 #poll_display{
   padding-right: 5px;
   font-size: 12px;
-}
-#right1{
-  padding-top: 5px;
-}
-#right2{
-
 }
 #right3{
   padding-top: 0px;

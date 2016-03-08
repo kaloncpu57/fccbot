@@ -4,6 +4,8 @@ var pollquestion = "";
 
 
 $(document).ready(function() {
+  // TODO: If there is no poll remove the poll widget
+
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal-trigger').leanModal();
 
@@ -20,9 +22,8 @@ $(document).ready(function() {
 
     if ($('#poll_question').val() !== "" && $('.chips').length!==0) {
       updatePoll();
+      Materialize.toast('Poll Updated', 3000); // 4000 is the duration of the toast
     }
-
-
 
   });
 });
