@@ -17,6 +17,7 @@ MongoDB.once('open', function() {
 var app = express(MongoDB);
 
 app.use(express.static(path.join(__dirname, 'dashboard/views')));
+app.use(express.static(path.join(__dirname, 'dashboard/static')));
 
 var db = {
   message: require('../schemas/message')(mongoose),

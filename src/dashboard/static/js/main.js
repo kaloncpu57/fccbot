@@ -6,7 +6,7 @@ $(document).ready(function() {
             addOption();
         }
     });
-    $('#deloptbtn').click(delOptions); 
+    $('#deloptbtn').click(delOptions);
 });
 
 function addOption() {
