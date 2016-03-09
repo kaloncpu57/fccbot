@@ -17,6 +17,12 @@ body {
   background-color: #424242;
 }
 
+@media only screen and (min-width: 993px) {
+  .container {
+      width: 90%;
+  }
+}
+
 header {
     margin-bottom: 20px;
 }
