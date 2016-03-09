@@ -59,6 +59,10 @@ header {
   color: green;
 }
 
+.input-field {
+  z-index: 1;
+}
+
 .modal-trigger {
   width: 149px;
 }

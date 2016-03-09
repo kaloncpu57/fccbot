@@ -28,12 +28,12 @@ $(document).ready(function() {
   });
 });
 
-// $(window).load(function() {
-//     // FadeOut Preloader
-//     $('#preloader').fadeOut();
-//     $("#outer-wrapper").fadeIn("fast");
-//     // to be fancy with it
-// });
+$(window).load(function() {
+    // FadeOut Preloader
+    $('#preloader').fadeOut();
+    $("#outer-wrapper").fadeIn("fast");
+    // to be fancy with it
+});
 
 function addOption() {
   var optiontext = $('#poll_item_input').val();
