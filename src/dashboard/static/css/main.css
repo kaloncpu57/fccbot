@@ -91,7 +91,6 @@ header {
 }
 #right3{
   padding-top: 0px;
-  padding-right: 20px;
   text-align: left;
 }
 #poll_display_header{
@@ -103,4 +102,39 @@ header {
 }
 #modal_poll_content{
   text-align: center;
+}
+
+/******************************************/
+
+/**** small screen ****/
+
+#channel_title_info > form > .card-panel > .row {
+    margin-bottom:0;
+}
+#channel_title_info > form {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/**** med screen ****/
+@media only screen and (min-width: 601px) {
+    #channel_title_info {
+        float: right;
+    }
+}
+
+/**** large screen ****/
+@media only screen and (min-width: 993px) {
+    #channel_title_info {
+        float: left;
+    }
+    #channel_title_info > form > .card-panel > .row > .input-field:nth-child(1) {
+      margin-top: 0;
+    }
+    #channel_title_info > form > .card-panel > .row > .input-field:nth-child(2) {
+        margin-top: 5px;
+    }
+    #channel_title {
+        margin-bottom: 0;
+    }
 }
