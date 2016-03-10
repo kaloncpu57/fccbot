@@ -1,6 +1,5 @@
 const request = require('request');
 const Youtube = require('youtube-api');
-const config = require('config');
 
 module.exports = function(client, wclient, chat, whisper, config, db) {
 

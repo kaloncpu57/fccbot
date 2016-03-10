@@ -21,6 +21,8 @@ app.use(express.static(path.join(__dirname, 'dashboard/static')));
 
 var db = {
   message: require('../schemas/message')(mongoose),
+  poll: require('../schemas/poll')(mongoose),
+  pollVote: require('../schemas/pollVote')(mongoose)
 };
 
 
