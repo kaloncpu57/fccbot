@@ -1,6 +1,6 @@
 var bodyParser = require('body-parser')
 
-module.exports = function(app, db, io, config) {
+module.exports = function(app, db, io, comm, config) {
 
   app.use( bodyParser.json() );       // to support JSON-encoded bodies
   app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -15,11 +15,7 @@ module.exports = function(app, db, io, config) {
       return;
     }
 
-    db.poll.find({ end: null }, (err, polls) => {
-      polls.forEach(poll => {
-        poll.end = Date.now();
-        poll.save(err => err ? console.log('[POLL CHECK ERR]',err) : 0);
-      });
+    comm.clearPolls(() => {
       var poll = new db.poll({
       creator: req.body.creator,
       title: req.body.name,
@@ -27,9 +23,14 @@ module.exports = function(app, db, io, config) {
       });
       poll.save((err) => {
         if (err) console.log('[POLL CREATION ERR]',err);
+        else comm.emit('newpoll');
         res.status(err ? 400 : 201);
         res.send();
       });
     });
+  });
+
+  app.post('/endpoll', (req, res) => {
+    comm.emit('endpoll');
   });
 }

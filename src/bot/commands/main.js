@@ -1,6 +1,6 @@
 var request = require('request');
 
-module.exports = function(client, wclient, chat, whisper, config, db) {
+module.exports = function(client, wclient, chat, whisper, comm, config, db) {
 
   client.on('chat', (channel, user, message, self) => {
     if (self) return;

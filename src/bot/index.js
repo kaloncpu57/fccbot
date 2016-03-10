@@ -1,6 +1,6 @@
 const requireIndex = require('requireindex');
 
-module.exports = function(app, db, io, config, client, wclient) {
+module.exports = function(app, db, io, comm, config, client, wclient) {
 
   var messagesSent = []; // List of last 20 message send times
   var needToSend = []; // Messages that can't be sent until we've waited long enough
@@ -50,6 +50,16 @@ module.exports = function(app, db, io, config, client, wclient) {
   const commandFiles = requireIndex(__dirname+'/commands');
   Object.keys(commandFiles).forEach(cmdFile => {
     console.log('Loading Command File '+cmdFile);
-    commandFiles[cmdFile](client, wclient, chat, whisper, config, db);
+    commandFiles[cmdFile](client, wclient, chat, whisper, comm, config, db);
   });
+
+  comm.clearPolls = (cb) => {
+    db.poll.find({ end: null }, (err, polls) => {
+      polls.forEach(poll => {
+        poll.end = Date.now();
+        poll.save(err => err ? console.log('[POLL CHECK ERR]',err) : 0);
+      });
+      if (cb) cb();
+    });
+  };
 }

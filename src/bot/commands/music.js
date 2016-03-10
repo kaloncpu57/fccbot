@@ -1,7 +1,7 @@
 const request = require('request');
 const Youtube = require('youtube-api');
 
-module.exports = function(client, wclient, chat, whisper, config, db) {
+module.exports = function(client, wclient, chat, whisper, comm, config, db) {
 
   var auth = Youtube.authenticate({
       type: "key"

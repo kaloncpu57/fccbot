@@ -64,5 +64,7 @@ var whisperclient = new tmi.client(whisperoptions);
 client.connect();
 whisperclient.connect();
 
-require('./bot/index')(app, db, io, config, client, whisperclient);
-require('./dashboard/server')(app, db, io, config);
+var communicator = Object.create(require('events').EventEmitter.prototype);
+
+require('./bot/index')(app, db, io, communicator, config, client, whisperclient);
+require('./dashboard/server')(app, db, io, communicator, config);
