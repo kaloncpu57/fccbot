@@ -74,7 +74,7 @@ module.exports = function(client, wclient, chat, whisper, comm, config, db) {
         totals = totals.sort((a, b) => a.total < b.total)
         var place = ['1st', '2nd', '3rd'];
         totals.forEach((total, i) => {
-          chat(channel, (i<3?place[i]:(i+1)+'th')+') '+total.name+' ('+total.total+' votes, '+(Math.round(total.total/votes.length*100))+'%)');
+          chat(channel, (i<3?place[i]:(i+1)+'th')+': '+total.name+' ('+total.total+' votes, '+(Math.round(total.total/votes.length*100))+'%)');
         });
       });
     });
