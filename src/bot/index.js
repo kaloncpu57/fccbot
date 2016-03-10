@@ -26,6 +26,7 @@ module.exports = function(app, db, io, config, client, wclient) {
   setInterval(sendAllNeededMessages, 1000); // TODO: Maybe fix? Cleaner way of doing this?
 
   function whisper(user, msg) {
+    if (user.username) user = user.username;
     wclient.whisper(user, msg);
   }
 

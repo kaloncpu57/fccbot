@@ -15,17 +15,21 @@ module.exports = function(app, db, io, config) {
       return;
     }
 
-    var poll = new db.poll({
+    db.poll.find({ end: null }, (err, polls) => {
+      polls.forEach(poll => {
+        poll.end = Date.now();
+        poll.save(err => err ? console.log('[POLL CHECK ERR]',err) : 0);
+      });
+      var poll = new db.poll({
       creator: req.body.creator,
       title: req.body.name,
       options: req.body.options.split(',')
+      });
+      poll.save((err) => {
+        if (err) console.log('[POLL CREATION ERR]',err);
+        res.status(err ? 400 : 201);
+        res.send();
+      });
     });
-    console.log(poll);
-    poll.save((err) => {
-      if (err) console.log('[POLL CREATION ERR]',err);
-    });
-    res.status(201);
-    res.send();
   });
-
 }
