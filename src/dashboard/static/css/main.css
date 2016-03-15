@@ -125,6 +125,9 @@ header {
 
 /**** large screen ****/
 @media only screen and (min-width: 993px) {
+    .frmh {
+        min-height: 91px;
+    }
     #channel_title_info {
         float: left;
     }
