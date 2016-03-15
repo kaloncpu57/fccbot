@@ -103,7 +103,33 @@ header {
 #modal_poll_content{
   text-align: center;
 }
-
+#event_log {
+  text-align: left;
+}
+#event_log .el_border {
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+}
+#event_log .el_header {
+  border-bottom: 2px solid #bdbdbd;
+  background-color: #f2f2f2;
+  padding: 7px 8px 5px;
+}
+#event_log .el_header i {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+#event_log .el_body {
+  padding: 6px 11px 5px 9px;
+  overflow-y: scroll;
+  height: 300px;
+  width: 100%;
+}
+#event_log .el_body p {
+  margin: 0;
+  margin-bottom: 3px;
+  word-wrap: break-word;
+}
 /******************************************/
 
 /**** small screen ****/
