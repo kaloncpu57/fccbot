@@ -59,23 +59,24 @@
     </header>
     <section class="container dashboard">
       <div class="row">
-        <div class="col s3 vertical-align">
-          <div class="card-panel">
-             <div class="valign-wrapper">
-                 <img class="circle img-responsive" id="streamer_image" src="https://static-cdn.jtvnw.net/jtv_user_pictures/freecodecamp-profile_image-d9514f2df0962329-300x300.png" style="width:50px; height:50px;"> <span id="streamer_name">FreeCodeCamp</span>
+        <div id="streamer_info" class="col s12 m4 l3">
+          <div class="card-panel frmh">
+             <div class="valign-wrapper vertical-align">
+                 <img class="circle img-responsive" id="streamer_image" src="https://static-cdn.jtvnw.net/jtv_user_pictures/freecodecamp-profile_image-d9514f2df0962329-300x300.png" style="width:50px; height:50px;">
+                 <span id="streamer_name">FreeCodeCamp</span>
             </div>
           </div>
         </div>
-        <div class="col s6 vertical-align">
+        <div id="channel_title_info" class="col s12 m8 l6">
           <!-- Channel Title Set -->
           <form class="col s12">
-            <div class="card-panel">
-              <div class="row" style="margin-bottom:0;">
-                <div class="col s8" style="margin-top: 5px; margin-left: 25px; padding: 0px 0px;">
-                  <input id="channel_title" style="margin-bottom:0;" type="text" placeholder="Stream Title" required>
+            <div class="card-panel frmh">
+              <div class="row">
+                <div class="input-field col s12 l10">
+                  <input id="channel_title" placeholder="Stream Title" required>
                 </div>
-                <div class="input-field col s3" style="margin-top:5px; padding-left:0;">
-                  <button class="btn waves-effect waves-light green darken-3" name="action" type="submit">
+                <div class="input-field col s12 l2">
+                  <button class="col s12 12 btn waves-effect waves-light green darken-3" name="action" type="submit">
                     <i class="material-icons dp48">launch</i>
                   </button>
                 </div>
@@ -83,8 +84,8 @@
             </div>
           </form>
         </div>
-        <div class="col s3">
-          <div class="card-panel">
+        <div class="col s12 m4 l3">
+          <div class="card-panel frmh">
             <!-- Switch -->
             <div class="switch">
               <label>
@@ -98,59 +99,83 @@
         </div>
       </div>
       <div class="row">
-        <div class="col s3">
-          <div>
-            <div class="card-panel"></div>
-          </div>
-          <div>
-            <div class="card-panel"></div>
+        <div class="col s12 l3">
+          <div class="row">
+            <div class="col s12 m6 l12">
+              <div class="card-panel"></div>
+            </div>
+            <div class="col s12 m6 l12">
+              <div class="card-panel"></div>
+            </div>
           </div>
         </div>
-        <div class="col s6">
+        <div class="col s12 l6">
           <div class="card-panel">
             <div id="chat_window">
               <iframe frameborder="0" height="350" id="chat_embed" name="chat_embed" scrolling="no" src="//www.twitch.tv/freecodecamp/chat" width="100%"></iframe>
             </div>
           </div>
           <div class="card-panel">
-            Event Log
+            <div id="event_log">
+              <div class="el_border">
+                <div class="el_header">
+                    <i class="material-icons dp48">chat_bubble_outline</i>
+                    <span>Event Log</span>
+                </div><!-- end .el_header -->
+                <div class="el_body">
+                  <div>
+                    <p>TEST</p>
+                    <p>TEST</p>
+                    <p>TEST</p>
+                    <p>TEST</p>
+                    <p>TEST</p>
+                  </div>
+                </div><!-- end .el_body -->
+              </div>
+            </div><!-- end #event_log -->
           </div>
         </div>
-        <div class="col s3" id="right2"></div>
-        <div class="col s3" id="right3">
-          <div class="card-panel">
-            <button class="btn modal-trigger green darken-3" data-target="modal1">New Poll</button>
-            <ul class="collapsible" data-collapsible="accordion">
-              <li>
-                <div class="collapsible-header">
-                  <i class="material-icons">equalizer</i><span class="right3_collapsible_header"></span>
-                </div>
-                <div class="collapsible-body">
-                  <ul class="collection" id="right3_collapsible_body"></ul>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="modal modal-fixed-footer" id="modal1">
-          <div class="modal-content">
-            <div class="input-field col s10" id="modal_poll_content">
-              <i class="material-icons prefix">assessment</i>
-              <input id="poll_question" type="text" value="Poll">
-              <label for="poll_question">Poll Title</label>
+        <div class="col s12 l3">
+          <div class="row">
+            <div class="col s12 m6 l12" id="right3">
+              <div class="card-panel">
+              <button class="btn modal-trigger green darken-3" data-target="modal1">New Poll</button>
+              <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                  <div class="collapsible-header">
+                    <i class="material-icons">equalizer</i><span class="right3_collapsible_header"></span>
+                  </div>
+                  <div class="collapsible-body">
+                    <ul class="collection" id="right3_collapsible_body"></ul>
+                  </div>
+                </li>
+              </ul>
             </div>
-
-            <div class="input-field col s10" id="modal_poll_content">
-              <i class="material-icons prefix">add_to_photos</i>
-              <input id="poll_item_input" type="text">
-              <label for="poll_item_input">Add Poll options</label>
             </div>
+            <div class="modal modal-fixed-footer" id="modal1">
+              <div class="modal-content">
+                <div class="input-field col s10" id="modal_poll_content">
+                  <i class="material-icons prefix">assessment</i>
+                  <input id="poll_question" type="text" value="Poll">
+                  <label for="poll_question">Poll Title</label>
+                </div>
 
-            <div class="col s10 pollitems"></div>
-          </div>
-          <div class="modal-footer">
-            <a class="modal-action modal-close waves-effect waves-green btn-flat" id="submit_poll">Submit</a>
-            <a class="waves-effect waves-red btn-flat" id="deloptbtn">Clear</a>
+                <div class="input-field col s10" id="modal_poll_content">
+                  <i class="material-icons prefix">add_to_photos</i>
+                  <input id="poll_item_input" type="text">
+                  <label for="poll_item_input">Add Poll options</label>
+                </div>
+
+                <div class="col s10 pollitems"></div>
+              </div>
+              <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-green btn-flat" id="submit_poll">Submit</a>
+                <a class="waves-effect waves-red btn-flat" id="deloptbtn">Clear</a>
+              </div>
+            </div>
+            <div class="col s12 m6 l12">
+              <div class="card-panel"></div>
+            </div>
           </div>
         </div>
       </div>
