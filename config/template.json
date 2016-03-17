@@ -1,8 +1,9 @@
 {
   "twitch": {
-    "username": "",
+    "username": "fccbot",
     "oauth": "",
-
+    "clientID": "",
+    "clientSecret": "",
     "channels": ["freecodecamp"]
   },
 
