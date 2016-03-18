@@ -44,7 +44,12 @@ module.exports = function(app, db, io, comm, config) {
       res.redirect('/');
   });
 
-  app.get('/', function (req, res) {
+  function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) { return next(); }
+    res.redirect('/login')
+  }
+
+  app.get('/', ensureAuthenticated, function (req, res) {
     res.render('index', {
       varInEjsYouWantToAccess: 2,
       user: req.user,
@@ -53,16 +58,17 @@ module.exports = function(app, db, io, comm, config) {
   });
 
   app.get('/login', function (req, res) {
-      res.render('login');
+    res.render('login', {
+      varInEjsYouWantToAccess: 2,
+      user: req.user,
+      otherVar: 5
+    });
   });
 
   app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/login');
   });
-
-
-
 
 
 
