@@ -4,10 +4,10 @@ const twitchStrategy = require('passport-twitchtv').Strategy;
 
 module.exports = function(app, db, io, comm, config) {
 
-  app.use( bodyParser.json() );       // to support JSON-encoded bodies
+  app.use(bodyParser.json() );       // to support JSON-encoded bodies
   app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
-})); 
+}));
 
   app.use(passport.initialize());
   app.use(passport.session());
@@ -45,11 +45,15 @@ module.exports = function(app, db, io, comm, config) {
   });
 
   app.get('/', function (req, res) {
-    res.render('index');
+    res.render('index', {
+      varInEjsYouWantToAccess: 2,
+      user: req.user,
+      otherVar: 5
+    });
   });
 
   app.get('/login', function (req, res) {
-      res.render('login', { user: req.user });
+      res.render('login');
   });
 
   app.get('/logout', function(req, res) {

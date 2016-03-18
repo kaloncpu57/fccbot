@@ -2,13 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>FCCBOT- Dashboard</title>
-  <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="vendor.min.css">
-  <link rel="stylesheet" href="styles.min.css">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <% include partials/head %>
 </head>
 
 <body>
@@ -27,36 +21,9 @@
     </div>
   </div>
 
+  <% include partials/header %>
+
   <div id="outer-wrapper">
-    <!-- NAVBAR -->
-    <header>
-      <nav class="grey darken-4">
-        <div class="container nav-wrapper">
-          <ul class="left">
-            <li>
-              <a href="">Home</a>
-            </li>
-            <li>
-              <a href="">How to start streaming</a>
-            </li>
-            <li>
-              <a href="">Help</a>
-            </li>
-            <li>
-              <a href="">About</a>
-            </li>
-          </ul>
-          <ul class="right">
-            <li>
-              <div id="user_profile"><!-- User Avatar goes here --></div>
-            </li>
-            <li id="user_quit">
-              <a href="/logout">Sign Out</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
     <section class="container dashboard">
       <div class="row">
         <div id="streamer_info" class="col s12 m4 l3">
@@ -180,30 +147,7 @@
         </div>
       </div>
     </section>
-    <footer class="page-footer grey darken-4">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Footer Content</h5>
-            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-          © 2016 Copyright <a class="grey-text text-lighten-4 right" href="https://github.com/thejonathangraham/fccbot" target="_blank">Github</a>
-        </div>
-      </div>
-    </footer>
+    <% include partials/footer %>
   </div>
 
 
