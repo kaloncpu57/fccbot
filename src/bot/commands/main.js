@@ -1,4 +1,4 @@
-var request = require('request');
+const request = require('request');
 
 module.exports = function(client, wclient, chat, whisper, comm, config, db) {
 
@@ -33,5 +33,32 @@ module.exports = function(client, wclient, chat, whisper, comm, config, db) {
       });
     }
   });
+
+  var checkedFollowers = [];
+  setInterval(() => {
+    request('https://api.twitch.tv/kraken/channels/'+config.get('twitch.channels')[0]+'/follows', (err, http, body) => {
+      if (err) {
+        console.log('[REQUEST ERROR] Cannot get followers!',err);
+        return;
+      }
+      var followers;
+      try {
+        followers = JSON.parse(body).follows;
+      } catch (e) {
+        console.log('[REQUEST ERROR] Cannot parse followers!',e);
+        return;
+      }
+
+      var newFollow = followers.filter(f => !~checkedFollowers.indexOf(f.user.display_name) && Date.now() - (new Date(f.created_at)).getTime() < 4*60*1000).map(f => f.user.display_name);
+      checkedFollowers.push(...newFollow);
+      newFollowers(newFollow);
+    });
+  }, 10*1000);
+
+  function newFollowers(followers) {
+    if (followers.length == 0) return;
+    console.log(followers);
+    comm.emit('newFollowers', followers);
+  }
 
 }
