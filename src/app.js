@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 app.use(session({
   resave: false,
   saveUninitialized: false,
-  secret: config.session.secret,
+  secret: 'config.session.secret',
   // store: new MongoStore({ mongooseConnection: MongoDB }),
   cookie: { httpOnly: true, maxAge: 2419200000 }
 }));
@@ -33,7 +33,8 @@ app.use(express.static(path.join(__dirname, 'dashboard/static')));
 var db = {
   message: require('../schemas/message')(mongoose),
   poll: require('../schemas/poll')(mongoose),
-  pollVote: require('../schemas/pollVote')(mongoose)
+  pollVote: require('../schemas/pollVote')(mongoose),
+  user: require('../schemas/user')(mongoose)
 };
 
 const port = process.env.PORT || (config.get('testPort') ? 3000 : 80);

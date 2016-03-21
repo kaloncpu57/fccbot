@@ -51,17 +51,13 @@ module.exports = function(app, db, io, comm, config) {
 
   app.get('/', ensureAuthenticated, function (req, res) {
     res.render('index', {
-      varInEjsYouWantToAccess: 2,
-      user: req.user,
-      otherVar: 5
+      user: req.user
     });
   });
 
   app.get('/login', function (req, res) {
     res.render('login', {
-      varInEjsYouWantToAccess: 2,
-      user: req.user,
-      otherVar: 5
+      user: req.user
     });
   });
 
