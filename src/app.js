@@ -1,8 +1,10 @@
 const express = require('express');
+const session = require('express-session');
 const tmi = require('tmi.js');
 const mongoose = require('mongoose');
 const path = require('path');
 const config = require('config');
+const MongoStore = require('connect-mongo')(session);
 
 var MongoDB = mongoose.connect('mongodb://localhost:27017').connection;
 
@@ -19,6 +21,13 @@ var app = express(MongoDB);
 app.set('views', __dirname + '/dashboard/views');
 app.set('view engine', 'ejs');
 
+app.use(session({
+  resave: false,
+  saveUninitialized: false,
+  secret: config.session.secret,
+  // store: new MongoStore({ mongooseConnection: MongoDB }),
+  cookie: { httpOnly: true, maxAge: 2419200000 }
+}));
 app.use(express.static(path.join(__dirname, 'dashboard/static')));
 
 var db = {
@@ -26,8 +35,6 @@ var db = {
   poll: require('../schemas/poll')(mongoose),
   pollVote: require('../schemas/pollVote')(mongoose)
 };
-
-
 
 const port = process.env.PORT || (config.get('testPort') ? 3000 : 80);
 var server = app.listen(port, () => {

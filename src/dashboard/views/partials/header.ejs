@@ -18,7 +18,9 @@
       </ul>
       <ul class="right">
         <li>
-            <div id="user_profile"><!-- User Avatar goes here --><%= user %></div>
+          <% if (user) { %>
+            <div id="user_profile"><!-- User Avatar goes here --><%= user.displayName %></div>
+          <% } %>
         </li>
         <li id="user_quit">
           <a href="/logout">Sign Out</a>
