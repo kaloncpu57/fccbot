@@ -31,6 +31,12 @@ module.exports = function(client, wclient, chat, whisper, comm, config, db) {
         var str = 'The stream has been live for ' + (hours?hours+'h ':'') + (minutes?minutes+'m ':'') + (seconds?seconds+'s':'');
         chat(channel, str);
       });
+    } else if (message.match(/^!shop$/i)) {
+      chat(channel, 'Checkout the official freecodecamp shop: https://www.freecodecamp.com/shop');
+    } else if (message.match(/^!stickers$/i)) {
+      chat(channel, 'Free Code Camp laptop stickers are here! Get two for only $5, with free shipping anywhere! http://www.freecodecamp.com/shop');
+    } else if (message.match(/^!reddit$/i)) {
+      chat(channel, 'Subscribe to FreeCodeCamps Reddit: https://www.reddit.com/r/freecodecamp');
     }
   });
 
