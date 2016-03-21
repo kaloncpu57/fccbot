@@ -1,0 +1,36 @@
+<!-- NAVBAR -->
+<header>
+  <nav class="grey darken-4">
+    <div class="container nav-wrapper">
+      <ul class="left">
+        <li>
+          <a href="">Home</a>
+        </li>
+        <li>
+          <a href="">How to start streaming</a>
+        </li>
+        <li>
+          <a href="">Help</a>
+        </li>
+        <li>
+          <a href="">About</a>
+        </li>
+      </ul>
+      <ul class="right">
+        <li>
+          <% if (user) { %>
+            <div id="user_profile">
+              <img src="<%= user._json.logo %>" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
+              <%= user.displayName %>
+            </div>
+          <% } %>
+        </li>
+        <li id="user_quit">
+          <% if (user) { %>
+            <a href="/logout">Sign Out</a>
+          <% } %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
