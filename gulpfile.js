@@ -19,7 +19,7 @@ gulp.task('default', ['browser-sync', 'watch']);
 
 /**
  * Start server using supervisor.
- * Wait 1 second for server start
+ * Wait 3 seconds for server start
  * then, launch browserSync.
  */
 gulp.task('browser-sync', () => {
@@ -32,20 +32,18 @@ gulp.task('browser-sync', () => {
       proxy: 'localhost:3000',
       port: 7000
     });
-  }, 1000);
+  }, 3000);
 });
 
 /**
  * Watch for file changes and reload browser accordingly.
- * Watches (*.js|*.css|*.sass|*.scss)
+ * Watches (*.js|*.sass)
  */
 gulp.task('watch', () => {
-  gulp.watch('src/dashboard/views/*.html').on('change', browserSync.reload);
+  gulp.watch('src/dashboard/views/**/*.ejs').on('change', browserSync.reload);
 
   gulp.watch([
-    'src/dashboard/static/css/*.css',
-    'src/dashboard/static/css/*.scss',
-    'src/dashboard/static/css/*.sass'
+    'src/dashboard/static/css/**/*.sass'
   ], ['sass']);
 
   gulp.watch([
@@ -83,19 +81,17 @@ gulp.task('js:vendor', () => {
 
 /**
  * Compiles SASS/SCSS, Autoprefixes, Minifys,
- * and concat into `styles.min.css`.
+ * and concat into `main.min.css`.
  * This command run on file changes then reloads browser.
  */
 gulp.task('sass', () => {
   return gulp.src([
-    'src/dashboard/static/css/*.css',
-    'src/dashboard/static/css/*.scss',
-    'src/dashboard/static/css/*.sass'
+    'src/dashboard/static/sass/**/*.sass'
   ]).pipe(sass())
     .pipe(autoprefixer({
       browsers: ['last 2 versions']
     })).pipe(cssnano())
-    .pipe(concat('styles.min.css'))
+    .pipe(concat('main.min.css'))
     .pipe(gulp.dest('src/dashboard/static'))
     .pipe(browserSync.reload({ stream: true }));
 });
